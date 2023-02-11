@@ -10,7 +10,7 @@ import { Media , Card, CardBody,CardImg,CardImgOverlay,CardText,CardTitle} from 
         return(
             <ul className='list-unstyled'>
                 <li>{comments.comment}</li>
-                <li> --{comments.author} , {comments.date} </li>
+                <li> --{comments.author} ,{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))} </li>
             </ul>
         )
     }
@@ -57,7 +57,7 @@ import { Media , Card, CardBody,CardImg,CardImgOverlay,CardText,CardTitle} from 
     return (
         <div className='container'>
         <div className='row'>
-            {this.renderDish(this.props.renderDish)}
+            {this.renderDish(this.props.dish)}
 
         </div>
       </div>
