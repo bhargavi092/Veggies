@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Jumbotron, Navbar, NavbarBrand,NavbarToggler,Collapse,NavItem,Nav} from 'reactstrap';
+import {Jumbotron, Navbar, NavbarBrand,NavbarToggler,Collapse,NavItem,Nav,
+Modal,ModalBody,ModalHeader, Button} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
  class Header extends Component {
@@ -7,12 +8,18 @@ import { NavLink } from 'react-router-dom';
       super(props)
     
       this.state = {
-         isNavOpen:false
+         isNavOpen:false,
+         isModalOpen: false
       }
     }
     toggleNav =()=>{
         this.setState({
             isNavOpen: !this.state.isNavOpen
+        })
+    }
+    toggleModal =()=>{
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
         })
     }
 
@@ -47,6 +54,13 @@ import { NavLink } from 'react-router-dom';
                                         </NavLink>
                                     </NavItem>
                                 </Nav>
+                                <Nav className='ml-auto' navbar>
+                                    <NavItem>
+                                        <Button outline onClick={this.toggleModal}>
+                                            <span className='fa fa-sign-in fa-lg'></span>Login
+                                        </Button>
+                                    </NavItem>
+                                </Nav>
                        </Collapse>
                     </div>
                 </Navbar>
@@ -61,6 +75,13 @@ import { NavLink } from 'react-router-dom';
                     </div>
                 </div>
             </Jumbotron>
+            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                
+                <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                <ModalBody>
+                    
+                </ModalBody>
+            </Modal>
       </>
     )
   }
